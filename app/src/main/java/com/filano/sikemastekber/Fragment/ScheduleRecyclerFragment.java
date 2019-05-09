@@ -24,7 +24,13 @@ public class ScheduleRecyclerFragment extends android.support.v4.app.Fragment {
     public ScheduleRecyclerFragment(){ }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         // Inflate the layout for this fragment_schedule_recycler
         itemList = new ArrayList<>();
         generateItemList();

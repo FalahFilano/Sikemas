@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import com.filano.sikemastekber.Fragment.HomeFragment;
 import com.filano.sikemastekber.Fragment.ScheduleFragment;
+import com.filano.sikemastekber.Fragment.ScheduleRecyclerFragment;
 import com.filano.sikemastekber.R;
 
 
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new ScheduleFragment();
                 break;
             case R.id.nav_profile:
-                fragment = new HomeFragment();
+                fragment = new ScheduleRecyclerFragment();
                 break;
         }
         return loadFragment(fragment);
