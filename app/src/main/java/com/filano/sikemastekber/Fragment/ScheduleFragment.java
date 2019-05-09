@@ -6,12 +6,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.filano.sikemastekber.Fragment.ScheduleRecyclerFragment;
 import com.filano.sikemastekber.R;
 
 import java.util.ArrayList;
@@ -44,7 +43,7 @@ public class ScheduleFragment extends Fragment {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
         adapter.addFragment(new ScheduleRecyclerFragment(), "Senin");
         adapter.addFragment(new ScheduleRecyclerFragment(), "Selasa");
         adapter.addFragment(new ScheduleRecyclerFragment(), "Rabu");
@@ -53,7 +52,7 @@ public class ScheduleFragment extends Fragment {
         viewPager.setAdapter(adapter);
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    class ViewPagerAdapter extends FragmentStatePagerAdapter {
         private final List<ScheduleRecyclerFragment> mScheduleRecyclerFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 

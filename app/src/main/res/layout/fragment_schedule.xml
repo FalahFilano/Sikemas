@@ -33,9 +33,6 @@
             app:tabPaddingStart="16dp"
             app:tabPaddingEnd="16dp"
             app:tabPaddingBottom="-1dp"
-            android:clipToPadding="false"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
             app:tabGravity="fill"/>
 
     </android.support.design.widget.AppBarLayout>
