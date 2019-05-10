@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    private static final String URL = "http://10.151.12.161/SikemasWeb/public/";
+    private static final String URL = "http://192.168.43.224/SikemasWeb/public/";
     private static Retrofit client;
 
     public static Retrofit getInstance() {

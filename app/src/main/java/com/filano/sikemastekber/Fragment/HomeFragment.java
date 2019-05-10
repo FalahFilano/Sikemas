@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.filano.sikemastekber.Adapter.HomeAdapter;
+import com.filano.sikemastekber.Helper.Tanggal;
 import com.filano.sikemastekber.Model.Course;
 import com.filano.sikemastekber.Model.Kelas;
 import com.filano.sikemastekber.Model.KelasActive;
@@ -22,6 +24,7 @@ import com.filano.sikemastekber.Retrofit.ApiClient;
 import com.filano.sikemastekber.Retrofit.ApiInterface;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +38,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private HomeAdapter homeAdapter;
+    private TextView tvTanggal;
 
     ApiInterface api;
 
@@ -56,6 +60,10 @@ public class HomeFragment extends Fragment {
         generateItemList();
 
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
+        tvTanggal = rootView.findViewById(R.id.tvTangal);
+        tvTanggal.setText(Tanggal.getDate());
+
         recyclerView = rootView.findViewById(R.id.rvCourse);
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);

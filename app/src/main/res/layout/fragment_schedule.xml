@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:gravity="center_horizontal"
-        android:text="Minggu 14"
+        android:text="Jadwal"
         android:textSize="24sp"
         android:fontFamily="@font/regular"
         android:textColor="#ffffff"/>
