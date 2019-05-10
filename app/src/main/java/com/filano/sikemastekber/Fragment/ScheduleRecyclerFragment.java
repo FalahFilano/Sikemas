@@ -9,17 +9,28 @@ import android.view.ViewGroup;
 
 import com.filano.sikemastekber.Adapter.ScheduleAdapter;
 import com.filano.sikemastekber.Model.Course;
+import com.filano.sikemastekber.Model.Kelas;
 import com.filano.sikemastekber.R;
+import com.filano.sikemastekber.Response.KelasResponse;
+import com.filano.sikemastekber.Retrofit.ApiClient;
+import com.filano.sikemastekber.Retrofit.ApiInterface;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ScheduleRecyclerFragment extends android.support.v4.app.Fragment {
 
-    ArrayList<Course> itemList;
+    ArrayList<Kelas> itemList;
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private ScheduleAdapter scheduleAdapter;
+
+    private ApiInterface api;
+    private String hari;
 
     public ScheduleRecyclerFragment(){ }
 
@@ -32,6 +43,10 @@ public class ScheduleRecyclerFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         // Inflate the layout for this fragment_schedule_recycler
+
+        api = ApiClient.getInstance().create(ApiInterface.class);
+        hari = getArguments().getString("hari", "senin");
+
         itemList = new ArrayList<>();
         generateItemList();
 
@@ -48,11 +63,17 @@ public class ScheduleRecyclerFragment extends android.support.v4.app.Fragment {
     }
 
     private void generateItemList() {
-        itemList.add(new Course("Pemrograman Jaringan", "08.00 - 10.30", "IF - 102", "UAS - Progress Final Project", 7));
-        itemList.add(new Course("Teknologi Bergerak", "13.00 - 15.30", "Ruang SI", "UAS - Progress Final Project", 8));
-        itemList.add(new Course("Rekayasa Kebutuhan", "15.30 - 18.00", "IF - 106", "UAS - Progress Final Project", 8));
-        itemList.add(new Course("Animasi Komputer dan Permodelan 3D", "15.30 - 18.00", "IF - 106", "bersama ericko", 8));
-        itemList.add(new Course("Animasi Komputer dan Permodelan 3D", "15.30 - 18.00", "IF - 106", "bersama ericko", 8));
-        itemList.add(new Course("Animasi Komputer dan Permodelan 3D", "15.30 - 18.00", "IF - 106", "bersama ericko", 8));
+        api.getKelas(hari).enqueue(new Callback<KelasResponse>() {
+            @Override
+            public void onResponse(Call<KelasResponse> call, Response<KelasResponse> response) {
+                itemList = response.body().getListKelas();
+                scheduleAdapter.setItemList(itemList);
+            }
+
+            @Override
+            public void onFailure(Call<KelasResponse> call, Throwable t) {
+
+            }
+        });
     }
 }

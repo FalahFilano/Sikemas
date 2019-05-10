@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new ScheduleFragment();
                 break;
             case R.id.nav_profile:
-                fragment = new ScheduleRecyclerFragment();
+//                fragment = new ScheduleRecyclerFragment();
                 break;
         }
         return loadFragment(fragment);

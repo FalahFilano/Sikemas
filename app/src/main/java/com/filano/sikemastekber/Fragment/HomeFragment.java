@@ -70,10 +70,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void generateItemList() {
-//        itemList.add(new Course("Pemrograman Jaringan", "08.00 - 10.30", "IF - 102", "UAS - Progress Final Project", 7));
-//        itemList.add(new Course("Teknologi Bergerak", "13.00 - 15.30", "Ruang SI", "UAS - Progress Final Project", 8));
-//        itemList.add(new Course("Rekayasa Kebutuhan", "15.30 - 18.00", "IF - 106", "UAS - Progress Final Project", 8));
-//        itemList.add(new Course("Animasi Komputer dan Permodelan 3D", "15.30 - 18.00", "IF - 106", "bersama ericko", 8));
         api.getKelasActive().enqueue(new Callback<KelasActiveResponse>() {
             @Override
             public void onResponse(Call<KelasActiveResponse> call, Response<KelasActiveResponse> response) {

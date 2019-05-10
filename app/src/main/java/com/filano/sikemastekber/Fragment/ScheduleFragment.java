@@ -44,11 +44,37 @@ public class ScheduleFragment extends Fragment {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new ScheduleRecyclerFragment(), "Senin");
-        adapter.addFragment(new ScheduleRecyclerFragment(), "Selasa");
-        adapter.addFragment(new ScheduleRecyclerFragment(), "Rabu");
-        adapter.addFragment(new ScheduleRecyclerFragment(), "Kamis");
-        adapter.addFragment(new ScheduleRecyclerFragment(), "Jumat");
+
+        ScheduleRecyclerFragment scheduleSenin = new ScheduleRecyclerFragment();
+        Bundle bundleSenin = new Bundle();
+        bundleSenin.putString("hari", "senin");
+        scheduleSenin.setArguments(bundleSenin);
+        adapter.addFragment(scheduleSenin, "Senin");
+
+        ScheduleRecyclerFragment scheduleSelasa = new ScheduleRecyclerFragment();
+        Bundle bundleSelasa = new Bundle();
+        bundleSelasa.putString("hari", "selasa");
+        scheduleSelasa.setArguments(bundleSelasa);
+        adapter.addFragment(scheduleSelasa, "Selasa");
+
+        ScheduleRecyclerFragment scheduleRabu = new ScheduleRecyclerFragment();
+        Bundle bundleRabu = new Bundle();
+        bundleRabu.putString("hari", "rabu");
+        scheduleRabu.setArguments(bundleRabu);
+        adapter.addFragment(scheduleRabu, "Rabu");
+
+        ScheduleRecyclerFragment scheduleKamis = new ScheduleRecyclerFragment();
+        Bundle bundleKamis = new Bundle();
+        bundleKamis.putString("hari", "kamis");
+        scheduleKamis.setArguments(bundleKamis);
+        adapter.addFragment(scheduleKamis, "Kamis");
+
+        ScheduleRecyclerFragment scheduleJumat = new ScheduleRecyclerFragment();
+        Bundle bundleJumat = new Bundle();
+        bundleJumat.putString("hari", "jumat");
+        scheduleJumat.setArguments(bundleJumat);
+        adapter.addFragment(scheduleJumat, "Jumat");
+
         viewPager.setAdapter(adapter);
     }
 

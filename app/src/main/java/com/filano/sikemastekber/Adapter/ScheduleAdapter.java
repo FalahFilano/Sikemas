@@ -8,16 +8,22 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.filano.sikemastekber.Model.Course;
+import com.filano.sikemastekber.Model.Kelas;
 import com.filano.sikemastekber.R;
 
 import java.util.ArrayList;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
 
-    private ArrayList<Course> itemList;
+    private ArrayList<Kelas> itemList;
 
-    public ScheduleAdapter(ArrayList<Course> itemList) {
+    public ScheduleAdapter(ArrayList<Kelas> itemList) {
         this.itemList = itemList;
+    }
+
+    public void setItemList(ArrayList<Kelas> itemList) {
+        this.itemList = itemList;
+        this.notifyDataSetChanged();
     }
 
     @NonNull
@@ -29,10 +35,11 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ScheduleAdapter.ViewHolder viewHolder, int i) {
-        Course item = itemList.get(i);
-        viewHolder.courseName.setText(item.getCourseName());
-        viewHolder.jam.setText(item.getJam());
-        viewHolder.ruang.setText(item.getRuang());
+        Kelas item = itemList.get(i);
+        viewHolder.courseName.setText(item.getNama());
+        String jam = item.getJadwal().getJam_mulai() + " " + item.getJadwal().getJam_selesai();
+        viewHolder.jam.setText(jam);
+        viewHolder.ruang.setText(item.getRuangan().getNama());
     }
 
     @Override
