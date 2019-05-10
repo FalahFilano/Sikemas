@@ -3,22 +3,30 @@ package com.filano.sikemastekber.Adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.filano.sikemastekber.Model.Course;
+import com.filano.sikemastekber.Model.Kelas;
+import com.filano.sikemastekber.Model.KelasActive;
 import com.filano.sikemastekber.R;
 
 import java.util.ArrayList;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
-    private ArrayList<Course> itemList;
+    private ArrayList<KelasActive> itemList;
 
-    public HomeAdapter(ArrayList<Course> itemList) {
+    public HomeAdapter(ArrayList<KelasActive> itemList) {
         this.itemList = itemList;
+    }
+
+    public void setItemList(ArrayList<KelasActive> itemList) {
+        this.itemList = itemList;
+        this.notifyDataSetChanged();
     }
 
     @NonNull
@@ -30,11 +38,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.ViewHolder viewHolder, int i) {
-        Course item = itemList.get(i);
-        viewHolder.courseName.setText(item.getCourseName());
-        viewHolder.jam.setText(item.getJam());
-        viewHolder.ruang.setText(item.getRuang());
-        viewHolder.agenda.setText(item.getAgenda());
+        KelasActive item = itemList.get(i);
+        viewHolder.courseName.setText(item.getKelas().getNama());
+        String jam = item.getJadwal().getJam_mulai() + " " + item.getJadwal().getJam_selesai();
+        viewHolder.jam.setText(jam);
+        viewHolder.ruang.setText(item.getRuangan().getNama());
+        viewHolder.agenda.setText("UAS - Progress Final Project");
     }
 
     @Override
