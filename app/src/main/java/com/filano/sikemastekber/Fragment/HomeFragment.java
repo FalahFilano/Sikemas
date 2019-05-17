@@ -22,6 +22,7 @@ import com.filano.sikemastekber.R;
 import com.filano.sikemastekber.Response.KelasActiveResponse;
 import com.filano.sikemastekber.Retrofit.ApiClient;
 import com.filano.sikemastekber.Retrofit.ApiInterface;
+import com.filano.sikemastekber.SessionManager;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,7 +41,8 @@ public class HomeFragment extends Fragment {
     private HomeAdapter homeAdapter;
     private TextView tvTanggal;
 
-    ApiInterface api;
+    private ApiInterface api;
+    private SessionManager sessionManager;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -55,6 +57,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         api = ApiClient.getInstance().create(ApiInterface.class);
+        sessionManager = new SessionManager(getContext());
 
         itemList = new ArrayList<>();
         generateItemList();
@@ -78,7 +81,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void generateItemList() {
-        api.getKelasActive().enqueue(new Callback<KelasActiveResponse>() {
+        api.getKelasActive(sessionManager.getToken()).enqueue(new Callback<KelasActiveResponse>() {
             @Override
             public void onResponse(Call<KelasActiveResponse> call, Response<KelasActiveResponse> response) {
                 itemList = response.body().getListKelas();
@@ -87,8 +90,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<KelasActiveResponse> call, Throwable t) {
-//                Toast.makeText(getContext(), "Failed.", Toast.LENGTH_SHORT).show();
-                Log.d("Failed", t.getMessage().toString());
+                Toast.makeText(getContext(), "Failed.", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -66,17 +66,17 @@ public class DosenScheduleRecyclerFragment extends Fragment {
     }
 
     private void generateItemList() {
-        api.getKelas(hari).enqueue(new Callback<KelasResponse>() {
-            @Override
-            public void onResponse(Call<KelasResponse> call, Response<KelasResponse> response) {
-                itemList = response.body().getListKelas();
-                scheduleAdapter.setItemList(itemList);
-            }
-
-            @Override
-            public void onFailure(Call<KelasResponse> call, Throwable t) {
-
-            }
-        });
+//        api.getKelas(hari).enqueue(new Callback<KelasResponse>() {
+//            @Override
+//            public void onResponse(Call<KelasResponse> call, Response<KelasResponse> response) {
+//                itemList = response.body().getListKelas();
+//                scheduleAdapter.setItemList(itemList);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<KelasResponse> call, Throwable t) {
+//
+//            }
+//        });
     }
 }

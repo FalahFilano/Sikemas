@@ -31,6 +31,7 @@ public class ScheduleRecyclerFragment extends android.support.v4.app.Fragment {
 
     private ApiInterface api;
     private String hari;
+    private String token;
 
     public ScheduleRecyclerFragment(){ }
 
@@ -46,6 +47,7 @@ public class ScheduleRecyclerFragment extends android.support.v4.app.Fragment {
 
         api = ApiClient.getInstance().create(ApiInterface.class);
         hari = getArguments().getString("hari", "senin");
+        token = getArguments().getString("token", null);
 
         itemList = new ArrayList<>();
         generateItemList();
@@ -63,7 +65,7 @@ public class ScheduleRecyclerFragment extends android.support.v4.app.Fragment {
     }
 
     private void generateItemList() {
-        api.getKelas(hari).enqueue(new Callback<KelasResponse>() {
+        api.getKelas(token, hari).enqueue(new Callback<KelasResponse>() {
             @Override
             public void onResponse(Call<KelasResponse> call, Response<KelasResponse> response) {
                 itemList = response.body().getListKelas();

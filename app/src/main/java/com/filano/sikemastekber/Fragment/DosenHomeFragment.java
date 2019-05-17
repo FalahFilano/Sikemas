@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.filano.sikemastekber.Adapter.DosenHomeAdapter;
 import com.filano.sikemastekber.Adapter.HomeAdapter;
@@ -76,19 +77,18 @@ public class DosenHomeFragment extends Fragment {
     }
 
     private void generateItemList() {
-        api.getKelasActive().enqueue(new Callback<KelasActiveResponse>() {
-            @Override
-            public void onResponse(Call<KelasActiveResponse> call, Response<KelasActiveResponse> response) {
-                itemList = response.body().getListKelas();
-                homeAdapter.setItemList(itemList);
-            }
-
-            @Override
-            public void onFailure(Call<KelasActiveResponse> call, Throwable t) {
+//        api.getKelasActive().enqueue(new Callback<KelasActiveResponse>() {
+//            @Override
+//            public void onResponse(Call<KelasActiveResponse> call, Response<KelasActiveResponse> response) {
+//                itemList = response.body().getListKelas();
+//                homeAdapter.setItemList(itemList);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<KelasActiveResponse> call, Throwable t) {
 //                Toast.makeText(getContext(), "Failed.", Toast.LENGTH_SHORT).show();
-                Log.d("Failed", t.getMessage().toString());
-            }
-        });
+//            }
+//        });
     }
 
 

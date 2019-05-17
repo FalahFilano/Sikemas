@@ -39,13 +39,14 @@
             android:textSize="56dp" />
 
         <EditText
+            android:id="@+id/etNoIdentitas"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="32dp"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
             android:fontFamily="@font/regular"
-            android:hint="NRP"
+            android:hint="No Identitas"
             android:inputType="number"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
@@ -53,6 +54,7 @@
             android:background="@drawable/outline_button_style" />
 
         <EditText
+            android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
@@ -67,6 +69,7 @@
             android:background="@drawable/outline_button_style" />
 
         <Button
+            android:id="@+id/btnLogin"
             android:layout_width="176dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
