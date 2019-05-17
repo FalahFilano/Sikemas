@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        homeAdapter = new HomeAdapter(itemList);
+        homeAdapter = new HomeAdapter(itemList, getContext());
         recyclerView.setAdapter(homeAdapter);
 
         SnapHelper snapHelper = new LinearSnapHelper();

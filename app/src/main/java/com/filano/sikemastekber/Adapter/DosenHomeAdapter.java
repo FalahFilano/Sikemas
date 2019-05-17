@@ -101,6 +101,7 @@ public class DosenHomeAdapter extends RecyclerView.Adapter<DosenHomeAdapter.View
                 }
             });
         } else {
+            viewHolder.btnAktifkan.setBackground(context.getResources().getDrawable(R.drawable.button_style_disable, context.getTheme()));
             viewHolder.btnAktifkan.setText("Selesai");
             viewHolder.btnAktifkan.setEnabled(false);
         }

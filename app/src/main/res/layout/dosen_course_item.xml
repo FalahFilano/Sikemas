@@ -146,7 +146,7 @@
         android:layout_marginTop="396dp"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        android:background="@drawable/button_style_disable"
+        android:background="@drawable/button_style"
         android:text="Aktifkan"
         android:fontFamily="@font/medium"
         android:textAllCaps="false"

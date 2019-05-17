@@ -1,5 +1,6 @@
 package com.filano.sikemastekber.Retrofit;
 
+import com.filano.sikemastekber.Response.KehadiranResponse;
 import com.filano.sikemastekber.Response.KelasActiveResponse;
 import com.filano.sikemastekber.Response.ListKelasActiveResponse;
 import com.filano.sikemastekber.Response.KelasResponse;
@@ -52,5 +53,11 @@ public interface ApiInterface {
     @POST("api/dosen/kelas_active/update")
     Call<KelasActiveResponse> matikanKelas(@Header("Authorization") String token,
                                             @Field("kelas_id") Integer kelas_id);
+
+    @Headers("Accept: application/json")
+    @FormUrlEncoded
+    @POST("api/kehadiran/store")
+    Call<KehadiranResponse> absen(@Header("Authorization") String token,
+                                  @Field("kelas_active_id") Integer kelas_active_id);
 
 }
