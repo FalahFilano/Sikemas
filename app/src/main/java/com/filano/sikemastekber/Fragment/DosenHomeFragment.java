@@ -1,7 +1,5 @@
 package com.filano.sikemastekber.Fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,12 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.filano.sikemastekber.Adapter.DosenHomeAdapter;
-import com.filano.sikemastekber.Adapter.HomeAdapter;
 import com.filano.sikemastekber.Helper.Tanggal;
 import com.filano.sikemastekber.Model.Kelas;
-import com.filano.sikemastekber.Model.KelasActive;
 import com.filano.sikemastekber.R;
-import com.filano.sikemastekber.Response.KelasActiveResponse;
 import com.filano.sikemastekber.Response.KelasResponse;
 import com.filano.sikemastekber.Retrofit.ApiClient;
 import com.filano.sikemastekber.Retrofit.ApiInterface;
@@ -74,7 +69,7 @@ public class DosenHomeFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        homeAdapter = new DosenHomeAdapter(itemList);
+        homeAdapter = new DosenHomeAdapter(itemList, getContext());
         recyclerView.setAdapter(homeAdapter);
 
         SnapHelper snapHelper = new LinearSnapHelper();

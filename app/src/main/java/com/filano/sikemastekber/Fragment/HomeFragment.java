@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,17 +14,14 @@ import android.widget.Toast;
 
 import com.filano.sikemastekber.Adapter.HomeAdapter;
 import com.filano.sikemastekber.Helper.Tanggal;
-import com.filano.sikemastekber.Model.Course;
-import com.filano.sikemastekber.Model.Kelas;
 import com.filano.sikemastekber.Model.KelasActive;
 import com.filano.sikemastekber.R;
-import com.filano.sikemastekber.Response.KelasActiveResponse;
+import com.filano.sikemastekber.Response.ListKelasActiveResponse;
 import com.filano.sikemastekber.Retrofit.ApiClient;
 import com.filano.sikemastekber.Retrofit.ApiInterface;
 import com.filano.sikemastekber.SessionManager;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -83,9 +79,9 @@ public class HomeFragment extends Fragment {
     }
 
     private void generateItemList() {
-        api.getKelasActive(sessionManager.getToken()).enqueue(new Callback<KelasActiveResponse>() {
+        api.getKelasActive(sessionManager.getToken()).enqueue(new Callback<ListKelasActiveResponse>() {
             @Override
-            public void onResponse(Call<KelasActiveResponse> call, Response<KelasActiveResponse> response) {
+            public void onResponse(Call<ListKelasActiveResponse> call, Response<ListKelasActiveResponse> response) {
                 itemList = response.body().getListKelas();
                 homeAdapter.setItemList(itemList);
 
@@ -99,7 +95,7 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<KelasActiveResponse> call, Throwable t) {
+            public void onFailure(Call<ListKelasActiveResponse> call, Throwable t) {
                 Toast.makeText(getContext(), "Failed.", Toast.LENGTH_SHORT).show();
             }
         });
