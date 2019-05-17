@@ -44,6 +44,7 @@
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/thin"
         android:text="Falah Nurli Filano"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -58,4 +58,8 @@ public class SessionManager {
     public String getNoIdentitas() {
         return sharedPreferences.getString(NO_IDENTITAS, null);
     }
+
+    public String getType() {
+        return sharedPreferences.getString(TYPE, null);
+    }
 }

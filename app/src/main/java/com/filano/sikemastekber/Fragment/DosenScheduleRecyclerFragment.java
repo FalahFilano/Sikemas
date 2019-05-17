@@ -34,6 +34,7 @@ public class DosenScheduleRecyclerFragment extends Fragment {
 
     private ApiInterface api;
     private String hari;
+    private String token;
 
     public DosenScheduleRecyclerFragment() {
         // Required empty public constructor
@@ -49,6 +50,7 @@ public class DosenScheduleRecyclerFragment extends Fragment {
                              Bundle savedInstanceState) {
         api = ApiClient.getInstance().create(ApiInterface.class);
         hari = getArguments().getString("hari", "senin");
+        token = getArguments().getString("token", null);
 
         itemList = new ArrayList<>();
         generateItemList();
@@ -66,17 +68,17 @@ public class DosenScheduleRecyclerFragment extends Fragment {
     }
 
     private void generateItemList() {
-//        api.getKelas(hari).enqueue(new Callback<KelasResponse>() {
-//            @Override
-//            public void onResponse(Call<KelasResponse> call, Response<KelasResponse> response) {
-//                itemList = response.body().getListKelas();
-//                scheduleAdapter.setItemList(itemList);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<KelasResponse> call, Throwable t) {
-//
-//            }
-//        });
+        api.getKelasDosen(token, hari).enqueue(new Callback<KelasResponse>() {
+            @Override
+            public void onResponse(Call<KelasResponse> call, Response<KelasResponse> response) {
+                itemList = response.body().getListKelas();
+                scheduleAdapter.setItemList(itemList);
+            }
+
+            @Override
+            public void onFailure(Call<KelasResponse> call, Throwable t) {
+
+            }
+        });
     }
 }

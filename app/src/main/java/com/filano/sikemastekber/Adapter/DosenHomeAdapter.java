@@ -7,19 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.filano.sikemastekber.Model.Kelas;
 import com.filano.sikemastekber.Model.KelasActive;
 import com.filano.sikemastekber.R;
 
 import java.util.ArrayList;
 
 public class DosenHomeAdapter extends RecyclerView.Adapter<DosenHomeAdapter.ViewHolder> {
-    private ArrayList<KelasActive> itemList;
+    private ArrayList<Kelas> itemList;
 
-    public DosenHomeAdapter(ArrayList<KelasActive> itemList) {
+    public DosenHomeAdapter(ArrayList<Kelas> itemList) {
         this.itemList = itemList;
     }
 
-    public void setItemList(ArrayList<KelasActive> itemList) {
+    public void setItemList(ArrayList<Kelas> itemList) {
         this.itemList = itemList;
         this.notifyDataSetChanged();
     }
@@ -33,8 +34,8 @@ public class DosenHomeAdapter extends RecyclerView.Adapter<DosenHomeAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull DosenHomeAdapter.ViewHolder viewHolder, int i) {
-        KelasActive item = itemList.get(i);
-        viewHolder.courseName.setText(item.getKelas().getNama());
+        Kelas item = itemList.get(i);
+        viewHolder.courseName.setText(item.getNama());
         String jam = item.getJadwal().getJam_mulai() + " " + item.getJadwal().getJam_selesai();
         viewHolder.jam.setText(jam);
         viewHolder.ruang.setText(item.getRuangan().getNama());

@@ -18,11 +18,14 @@ import android.widget.Toast;
 import com.filano.sikemastekber.Adapter.DosenHomeAdapter;
 import com.filano.sikemastekber.Adapter.HomeAdapter;
 import com.filano.sikemastekber.Helper.Tanggal;
+import com.filano.sikemastekber.Model.Kelas;
 import com.filano.sikemastekber.Model.KelasActive;
 import com.filano.sikemastekber.R;
 import com.filano.sikemastekber.Response.KelasActiveResponse;
+import com.filano.sikemastekber.Response.KelasResponse;
 import com.filano.sikemastekber.Retrofit.ApiClient;
 import com.filano.sikemastekber.Retrofit.ApiInterface;
+import com.filano.sikemastekber.SessionManager;
 
 import java.util.ArrayList;
 
@@ -32,14 +35,15 @@ import retrofit2.Response;
 
 public class DosenHomeFragment extends Fragment {
 
-    ArrayList<KelasActive> itemList;
+    ArrayList<Kelas> itemList;
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private DosenHomeAdapter homeAdapter;
     private TextView tvTanggal;
 
-    ApiInterface api;
+    private SessionManager sessionManager;
+    private ApiInterface api;
 
     public DosenHomeFragment() {
         // Required empty public constructor
@@ -54,6 +58,9 @@ public class DosenHomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         api = ApiClient.getInstance().create(ApiInterface.class);
+        sessionManager = new SessionManager(getContext());
+
+        Log.d("test", "halo");
 
         itemList = new ArrayList<>();
         generateItemList();
@@ -77,18 +84,18 @@ public class DosenHomeFragment extends Fragment {
     }
 
     private void generateItemList() {
-//        api.getKelasActive().enqueue(new Callback<KelasActiveResponse>() {
-//            @Override
-//            public void onResponse(Call<KelasActiveResponse> call, Response<KelasActiveResponse> response) {
-//                itemList = response.body().getListKelas();
-//                homeAdapter.setItemList(itemList);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<KelasActiveResponse> call, Throwable t) {
-//                Toast.makeText(getContext(), "Failed.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        api.getKelasDosen(sessionManager.getToken(), Tanggal.hari()).enqueue(new Callback<KelasResponse>() {
+            @Override
+            public void onResponse(Call<KelasResponse> call, Response<KelasResponse> response) {
+                itemList = response.body().getListKelas();
+                homeAdapter.setItemList(itemList);
+            }
+
+            @Override
+            public void onFailure(Call<KelasResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Failed.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

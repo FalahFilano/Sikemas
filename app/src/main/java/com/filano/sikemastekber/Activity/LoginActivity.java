@@ -3,11 +3,13 @@ package com.filano.sikemastekber.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.filano.sikemastekber.Model.User;
 import com.filano.sikemastekber.R;
 import com.filano.sikemastekber.Response.LoginResponse;
 import com.filano.sikemastekber.Retrofit.ApiClient;
@@ -34,7 +36,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         api = ApiClient.getInstance().create(ApiInterface.class);
 
         if (sessionManager.isLogin()) {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            if (sessionManager.getType().equals(User.TYPE_MAHASISWA))
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            else if (sessionManager.getType().equals(User.TYPE_DOSEN))
+                startActivity(new Intent(LoginActivity.this, DosenMainActivity.class));
+
             finish();
         }
 
@@ -58,7 +64,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     String type = response.body().getData().getUser().getType();
 
                     sessionManager.login(no_identitas, name, type, token, token_type);
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+                    if (type.equals(User.TYPE_MAHASISWA)) {
+                        Log.d(getClass().getSimpleName(), "masuk mashsaiswa");
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    } else if (type.equals(User.TYPE_DOSEN)) {
+                        Log.d(getClass().getSimpleName(), "masuk dosen");
+                        startActivity(new Intent(LoginActivity.this, DosenMainActivity.class));
+                    }
+
                     finish();
                 } else if (status.equals("error")) {
                     Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();

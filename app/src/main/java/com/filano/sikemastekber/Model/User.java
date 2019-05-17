@@ -3,6 +3,10 @@ package com.filano.sikemastekber.Model;
 import com.google.gson.annotations.SerializedName;
 
 public class User {
+    public static final String TYPE_ADMIN = "admin";
+    public static final String TYPE_DOSEN = "dosen";
+    public static final String TYPE_MAHASISWA = "mahasiswa";
+
     @SerializedName("no_identitas")
     private String no_identitas;
 

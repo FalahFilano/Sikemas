@@ -20,6 +20,14 @@ public class Tanggal {
         return hari + ", " + tanggal + " " + bulan;
     }
 
+    public static String hari() {
+        if (calendar == null) {
+            calendar = Calendar.getInstance();
+        }
+
+        return getHari(calendar.get(Calendar.DAY_OF_WEEK));
+    }
+
     private static String getBulan(int month) {
         String bulan;
 

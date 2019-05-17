@@ -56,10 +56,21 @@
 
     </android.support.v7.widget.RecyclerView>
 
-
-
-
-
-
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/thin"
+        android:gravity="center"
+        android:text="Tidak ada perkuliahan aktif."
+        android:textSize="22sp"
+        android:textColor="#ffffff"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView" />
 
 </android.support.constraint.ConstraintLayout>

@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private HomeAdapter homeAdapter;
-    private TextView tvTanggal;
+    private TextView tvTanggal, tvEmpty;
 
     private ApiInterface api;
     private SessionManager sessionManager;
@@ -64,6 +64,8 @@ public class HomeFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
+        tvEmpty = rootView.findViewById(R.id.tvEmpty);
+
         tvTanggal = rootView.findViewById(R.id.tvTangal);
         tvTanggal.setText(Tanggal.getDate());
 
@@ -86,6 +88,14 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<KelasActiveResponse> call, Response<KelasActiveResponse> response) {
                 itemList = response.body().getListKelas();
                 homeAdapter.setItemList(itemList);
+
+                if (itemList.isEmpty()) {
+                    recyclerView.setVisibility(View.GONE);
+                    tvEmpty.setVisibility(View.VISIBLE);
+                } else {
+                    tvEmpty.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

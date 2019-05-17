@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.filano.sikemastekber.R;
+import com.filano.sikemastekber.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class DosenScheduleFragment extends Fragment {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private SessionManager sessionManager;
 
     public DosenScheduleFragment() {
         // Required empty public constructor
@@ -35,6 +37,8 @@ public class DosenScheduleFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        sessionManager = new SessionManager(getContext());
+
         View rootView = inflater.inflate(R.layout.fragment_dosen_schedule, container, false);
         viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -51,30 +55,35 @@ public class DosenScheduleFragment extends Fragment {
         DosenScheduleRecyclerFragment scheduleSenin = new DosenScheduleRecyclerFragment();
         Bundle bundleSenin = new Bundle();
         bundleSenin.putString("hari", "senin");
+        bundleSenin.putString("token", sessionManager.getToken());
         scheduleSenin.setArguments(bundleSenin);
         adapter.addFragment(scheduleSenin, "Senin");
 
         DosenScheduleRecyclerFragment scheduleSelasa = new DosenScheduleRecyclerFragment();
         Bundle bundleSelasa = new Bundle();
         bundleSelasa.putString("hari", "selasa");
+        bundleSelasa.putString("token", sessionManager.getToken());
         scheduleSelasa.setArguments(bundleSelasa);
         adapter.addFragment(scheduleSelasa, "Selasa");
 
         DosenScheduleRecyclerFragment scheduleRabu = new DosenScheduleRecyclerFragment();
         Bundle bundleRabu = new Bundle();
         bundleRabu.putString("hari", "rabu");
+        bundleRabu.putString("token", sessionManager.getToken());
         scheduleRabu.setArguments(bundleRabu);
         adapter.addFragment(scheduleRabu, "Rabu");
 
         DosenScheduleRecyclerFragment scheduleKamis = new DosenScheduleRecyclerFragment();
         Bundle bundleKamis = new Bundle();
         bundleKamis.putString("hari", "kamis");
+        bundleKamis.putString("token", sessionManager.getToken());
         scheduleKamis.setArguments(bundleKamis);
         adapter.addFragment(scheduleKamis, "Kamis");
 
         DosenScheduleRecyclerFragment scheduleJumat = new DosenScheduleRecyclerFragment();
         Bundle bundleJumat = new Bundle();
         bundleJumat.putString("hari", "jumat");
+        bundleJumat.putString("token", sessionManager.getToken());
         scheduleJumat.setArguments(bundleJumat);
         adapter.addFragment(scheduleJumat, "Jumat");
 

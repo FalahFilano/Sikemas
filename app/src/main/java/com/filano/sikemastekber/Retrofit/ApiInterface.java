@@ -26,11 +26,18 @@ public interface ApiInterface {
     @GET("api/auth/logout")
     Call<LogoutResponse> logout(@Header("Authorization") String token);
 
+    @Headers("Accept: application/json")
     @GET("api/kelas")
     Call<KelasResponse> getKelas(@Header("Authorization") String token,
                                  @Query("hari") String hari);
 
+    @Headers("Accept: application/json")
     @GET("api/kelas_active")
     Call<KelasActiveResponse> getKelasActive(@Header("Authorization") String token);
+
+    @Headers("Accept: application/json")
+    @GET("api/dosen/kelas")
+    Call<KelasResponse> getKelasDosen(@Header("Authorization") String token,
+                                      @Query("hari") String hari);
 
 }
