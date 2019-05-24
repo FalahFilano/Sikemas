@@ -9,10 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.filano.sikemastekber.Helper.Tanggal;
 import com.filano.sikemastekber.Model.KelasActive;
 import com.filano.sikemastekber.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> {
 
@@ -25,6 +29,11 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
         this.context = context;
     }
 
+    public void setItemList(ArrayList<KelasActive> itemList) {
+        this.itemList = itemList;
+        this.notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ClassAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -35,16 +44,17 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull final ClassAdapter.ViewHolder viewHolder, int i) {
         KelasActive item = itemList.get(i);
-        viewHolder.tgl.setText("iki tanggale");
+        viewHolder.tgl.setText(Tanggal.dateFormater(item.getCreated_at(), "YYYY-MM-dd HH:mm:ss", "dd/MM"));
         viewHolder.pertemuan.setText(String.valueOf(item.getPertemuan()));
-        switch (item.getStatusKehadiran()){
-            case 0:{
+        switch (item.getStatus_absen()){
+            case 0:
                 viewHolder.kehadiran.setText("Absen");
                 viewHolder.kehadiran.setBackground(context.getDrawable(R.color.white));
-                Log.d("TAG", "onBindViewHolder: ");
                 break;
-            }
-            case 1: viewHolder.kehadiran.setText("Hadir"); break;
+
+            case 1:
+                viewHolder.kehadiran.setText("Hadir");
+                break;
         }
     }
 

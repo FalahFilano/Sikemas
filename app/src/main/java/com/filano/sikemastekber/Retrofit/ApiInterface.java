@@ -60,4 +60,8 @@ public interface ApiInterface {
     Call<KehadiranResponse> absen(@Header("Authorization") String token,
                                   @Field("kelas_active_id") Integer kelas_active_id);
 
+    @Headers("Accept: application/json")
+    @GET("api/kehadiran")
+    Call<ListKelasActiveResponse> getDetailKehadiran(@Header("Authorization") String token,
+                                                     @Query("kelas_id") Integer kelas_id);
 }

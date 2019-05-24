@@ -1,6 +1,9 @@
 package com.filano.sikemastekber.Helper;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Tanggal {
     private static Calendar calendar;
@@ -105,5 +108,16 @@ public class Tanggal {
         }
 
         return hari;
+    }
+
+    public static String dateFormater(String dateString, String fromFormat, String toFormat) {
+        Date date = null;
+        try {
+            date = new SimpleDateFormat(fromFormat).parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return new SimpleDateFormat(toFormat).format(date);
     }
 }

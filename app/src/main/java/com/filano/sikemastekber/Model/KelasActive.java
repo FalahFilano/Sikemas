@@ -27,6 +27,9 @@ public class KelasActive {
     @SerializedName("status_absen")
     private Integer status_absen;
 
+    @SerializedName("created_at")
+    private String created_at;
+
     public KelasActive() {
     }
 
@@ -92,5 +95,13 @@ public class KelasActive {
 
     public void setStatus_absen(Integer status_absen) {
         this.status_absen = status_absen;
+    }
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 }

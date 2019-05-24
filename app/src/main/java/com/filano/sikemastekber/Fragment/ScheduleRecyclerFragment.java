@@ -58,7 +58,7 @@ public class ScheduleRecyclerFragment extends android.support.v4.app.Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        scheduleAdapter = new ScheduleAdapter(itemList);
+        scheduleAdapter = new ScheduleAdapter(itemList, getContext());
         recyclerView.setAdapter(scheduleAdapter);
 
         return rootView;
