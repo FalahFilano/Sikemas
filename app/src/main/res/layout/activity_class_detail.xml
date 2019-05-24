@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.ClassFragment"
+    tools:context=".Activity.ClassDetailActivity"
     android:paddingLeft="32dp"
     android:paddingRight="32dp"
     android:paddingTop="32dp"
@@ -81,6 +81,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvCourseDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
