@@ -44,7 +44,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull final ClassAdapter.ViewHolder viewHolder, int i) {
         KelasActive item = itemList.get(i);
-        viewHolder.tgl.setText(Tanggal.dateFormater(item.getCreated_at(), "YYYY-MM-dd HH:mm:ss", "dd/MM"));
+        viewHolder.tgl.setText(Tanggal.dateFormater(item.getCreated_at(), "YYYY-MM-dd HH:mm:ss", "dd MMM"));
         viewHolder.pertemuan.setText(String.valueOf(item.getPertemuan()));
         switch (item.getStatus_absen()){
             case 0:
