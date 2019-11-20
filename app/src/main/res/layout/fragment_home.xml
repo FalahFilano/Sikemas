@@ -15,7 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/thin"
-        android:text="Jumat, 26 Maret"
+        android:text="Kamis, 23 Mei"
         android:textColor="#ffffff"
         android:textSize="44sp"
         app:layout_constraintEnd_toEndOf="parent"

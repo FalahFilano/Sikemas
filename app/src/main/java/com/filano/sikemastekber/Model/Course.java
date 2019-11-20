@@ -5,14 +5,32 @@ public class Course {
     private String jam;
     private String ruang;
     private String agenda;
-    private int pertemuan;
+    private int btnStatus;
+    private String btnLabel;
 
-    public Course(String courseName, String jam, String ruang, String agenda, int pertemuan) {
+    public Course(String courseName, String jam, String ruang, String agenda, int btnStatus, String btnLabel) {
         this.courseName = courseName;
         this.jam = jam;
         this.ruang = ruang;
         this.agenda = agenda;
-        this.pertemuan = pertemuan;
+        this.btnStatus = btnStatus;
+        this.btnLabel = btnLabel;
+    }
+
+    public String getBtnLabel() {
+        return btnLabel;
+    }
+
+    public void setBtnLabel(String btnLabel) {
+        this.btnLabel = btnLabel;
+    }
+
+    public int getBtnStatus() {
+        return btnStatus;
+    }
+
+    public void setBtnStatus(int btnStatus) {
+        this.btnStatus = btnStatus;
     }
 
     public String getCourseName() {
@@ -47,11 +65,5 @@ public class Course {
         this.agenda = agenda;
     }
 
-    public int getPertemuan() {
-        return pertemuan;
-    }
 
-    public void setPertemuan(int pertemuan) {
-        this.pertemuan = pertemuan;
-    }
 }

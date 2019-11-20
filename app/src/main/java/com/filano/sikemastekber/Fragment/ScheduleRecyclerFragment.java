@@ -48,11 +48,9 @@ public class ScheduleRecyclerFragment extends android.support.v4.app.Fragment {
     }
 
     private void generateItemList() {
-        itemList.add(new Course("Pemrograman Jaringan", "08.00 - 10.30", "IF - 102", "UAS - Progress Final Project", 7));
-        itemList.add(new Course("Teknologi Bergerak", "13.00 - 15.30", "Ruang SI", "UAS - Progress Final Project", 8));
-        itemList.add(new Course("Rekayasa Kebutuhan", "15.30 - 18.00", "IF - 106", "UAS - Progress Final Project", 8));
-        itemList.add(new Course("Animasi Komputer dan Permodelan 3D", "15.30 - 18.00", "IF - 106", "bersama ericko", 8));
-        itemList.add(new Course("Animasi Komputer dan Permodelan 3D", "15.30 - 18.00", "IF - 106", "bersama ericko", 8));
-        itemList.add(new Course("Animasi Komputer dan Permodelan 3D", "15.30 - 18.00", "IF - 106", "bersama ericko", 8));
+        itemList.add(new Course("Pemrograman Jaringan F", "08.00 - 10.30", "LP 2", "Tugas 4 & Tugas 5", 0, "Kelas Berakhir"));
+        itemList.add(new Course("Rekayasa Kebutuhan E", "13.00 - 15.30", "IF - 106", "Demo Final Project", 1, "Absen"));
+        itemList.add(new Course("Animasi Komputer dan Permodelan 3D", "15.30 - 18.00", "IF - 106", "Presentasi dan pengumpulan PPT", 0, "Kelas Belum Dimulai"));
+        itemList.add(new Course("Pra TA", "-", "-", "Proposal TA", 0, "Kelas Berakhir"));
     }
 }
